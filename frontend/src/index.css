@@ -1,0 +1,42 @@
+@import "tailwindcss";
+/* @tailwind utilities; */
+
+:root{
+  font-family: 'Inter',sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+ /* Swiper customizations */
+        .swiper-button-next,
+        .swiper-button-prev {
+          width: 50px;
+          height: 50px;
+          margin-top: -25px;
+          color: white !important;
+        }
+
+        /* .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+          color: #d97706 !important;
+        } */
+
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+          /* font-size: 20px;
+          font-weight: 600; */
+          font-size: 1.125rem;
+        }
+
+        .swiper-pagination-bullet {
+          width: 12px;
+          height: 12px;
+          background-color: white !important;
+          opacity: 0.6;
+        }
+
+        .swiper-pagination-bullet-active {
+          background-color: #d97706 !important;
+          opacity: 1 !important;
+          transform: scale(1.2);
+        }
