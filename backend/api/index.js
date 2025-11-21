@@ -17,7 +17,10 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
+app.use(cors(
+    origin: ["https://eagle-front-alpha.vercel.app/"],
+    credentials: true,
+));
 
 // Routes
 app.use("/api/auth", authRoute);
