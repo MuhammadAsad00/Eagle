@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-// import connectDB from '../config/db.js'; // NOTE: Adjust path to connectDB if necessary
+import connectDB from '../config/db.js'; // <-- UNCOMMENTED: You must import the function to use it.
 import authRoute from '../routes/authRoutes.js';
 import cookieParser from 'cookie-parser';
 import productRoute from '../routes/productRoutes.js';
@@ -17,10 +17,7 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({
-    origin: ["http://localhost:5173", "http://localhost:5174", "https://your-frontend-domain.com"], // Add your deployed frontend URL here!
-    credentials: true,
-}));
+app.use(cors());
 
 // Routes
 app.use("/api/auth", authRoute);
@@ -30,12 +27,13 @@ app.use("/api/cart", cartRoute);
 
 // Basic Test Route (Optional)
 app.get("/", (req, res) => {
-    res.send("WELLCOME TO EAGLE API");
+    // This route is often called to check if the function is alive.
+    res.send("WELLCOME TO EAGLE API - DB Connection Attempted");
 });
 
 // IMPORTANT: Connect to DB outside of the function export
 // The database connection should only run once during initialization
-connectDB(); 
+connectDB(); // <-- Now the function exists and can be called.
 
 // 🎯 EXPORT THE APP INSTANCE 🎯
 // This is the handler Vercel looks for to run your Express server.
