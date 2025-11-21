@@ -4,9 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node backend/server.js",
+    "start": "node index.js",
     "dev": "nodemon backend/server.js",
-    "seed": "node seeder.js"
+    "seed": "node seeder.js",
+    "vercel-start": "node index"
   },
   "keywords": [],
   "author": "",
