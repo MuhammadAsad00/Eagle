@@ -22,11 +22,12 @@ export const register = async (req, res) => {
     const user = await User.create({ name, email, password: hashedPassword });
     let token = await genToken(user._id);
     res.cookie("token", token, {
-      httpOnly: true,
-      secure: false,
-      sameSite: "strict",
-      maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
+  httpOnly: true,
+  secure: true,               // must be TRUE on HTTPS
+  sameSite: "none",           // required for cross-domain cookies
+  path: "/",                  // important for Vercel
+  maxAge: 7 * 24 * 60 * 60 * 1000
+});
     return res.status(201).json(user);
   } catch (error) {
     console.error("Register error");
@@ -47,11 +48,12 @@ export const login = async (req, res) => {
     }
     let token = await genToken(user._id);
     res.cookie("token", token, {
-      httpOnly: true,
-      secure: false,
-      sameSite: "strict",
-      maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
+  httpOnly: true,
+  secure: true,               // must be TRUE on HTTPS
+  sameSite: "none",           // required for cross-domain cookies
+  path: "/",                  // important for Vercel
+  maxAge: 7 * 24 * 60 * 60 * 1000
+});
     return res.status(200).json(user);
   } catch (error) {
     console.error("Login error");
