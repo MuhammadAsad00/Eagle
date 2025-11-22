@@ -18,7 +18,10 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: "https://eagle-front-alpha.vercel.app",
+   origin: [
+      "https://eagle-front-alpha.vercel.app",
+      "https://eagle-wheat.vercel.app" // if frontend deployed here
+    ],
     credentials: true,
   })
 );
