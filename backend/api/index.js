@@ -15,6 +15,7 @@ const app = express();
 // Required for Vercel secure cookies
 app.set("trust proxy", 1);
 
+// Middleware
 app.use(express.json());
 app.use(cookieParser());
 
@@ -22,7 +23,6 @@ app.use(
   cors({
     origin: [
       "https://eagle-front-alpha.vercel.app",
-      "https://eagle-wheat.vercel.app"
     ],
     credentials: true,
   })
@@ -35,11 +35,11 @@ app.use("/api/product", productRoute);
 app.use("/api/cart", cartRoute);
 
 app.get("/", (req, res) => {
-  res.send("WELLCOME TO EAGLE API - DB Connection Attempted");
+  res.send("WELCOME TO EAGLE API - DB Connected");
 });
 
 // Connect DB once
 connectDB();
 
-// Required for Vercel serverless
-export default (req, res) => app(req, res);
+// 🚀 Export app directly (VERY IMPORTANT)
+export default app;
