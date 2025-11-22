@@ -16,7 +16,6 @@ const ShopContext = ({ children }) => {
     try {
       setLoading(true);
       const result = await axios.get(`${serverUrl}/api/product/getallproducts`);
-      console.log(result.data);
       setProduct(result.data);
     } catch (error) {
       console.log("Error fetching products:", error);
