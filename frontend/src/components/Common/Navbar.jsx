@@ -41,7 +41,6 @@ const Navbar = ({ textColor, hoverColor, shouldBeTransparent }) => {
   const handleLogout = async () => {
     try {
       const result = await axios.get(`${serverUrl}/api/auth/logout`,{withCredentials:true});
-      console.log(result.data);
       getCurrentUser();
     } catch (error) {
       console.error(error);
