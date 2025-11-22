@@ -38,8 +38,8 @@ const ShopContext = ({ children }) => {
       const queryParams = new URLSearchParams(filters).toString();
 
       const result = await axios.get(
-        `${serverUrl}/api/product/filterproduct?${queryParams}`
-      );
+  `${serverUrl}/api/product/filterproduct?${queryParams}`
+);
 
       console.log(result.data);
       setProduct(result.data);
