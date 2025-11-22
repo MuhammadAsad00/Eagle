@@ -12,15 +12,17 @@ dotenv.config();
 
 const app = express();
 
-// Middleware
+// Required for Vercel secure cookies
+app.set("trust proxy", 1);
+
 app.use(express.json());
 app.use(cookieParser());
 
 app.use(
   cors({
-   origin: [
+    origin: [
       "https://eagle-front-alpha.vercel.app",
-      "https://eagle-wheat.vercel.app" // if frontend deployed here
+      "https://eagle-wheat.vercel.app"
     ],
     credentials: true,
   })
@@ -39,5 +41,5 @@ app.get("/", (req, res) => {
 // Connect DB once
 connectDB();
 
-// 🚀 REQUIRED FOR VERCEL SERVERLESS
+// Required for Vercel serverless
 export default (req, res) => app(req, res);
